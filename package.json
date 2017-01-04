@@ -1,0 +1,14 @@
+{
+  "name": "magic-mirror-smarthomepy",
+  "version": "0.0.1",
+  "description": "Show values from SmartHome.py on your MagicMirror",
+  "main": "magic-mirror-smarthomepy.js",
+  "scripts": {
+    "test": "node smarthomepy-io-tests.js"
+  },
+  "author": "Marcel Tiews",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "websocket": "^1.0.24"
+  }
+}
