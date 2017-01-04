@@ -4,6 +4,8 @@
 
 Small Module to display values from [SmartHome.py](https://mknx.github.io/smarthome/) (using the Visu plug-in) on your [MagicMirror](https://github.com/MichMich/MagicMirror).
 
+![Screenshot](screenshot.png)
+
 ### Installation
 
 Clone the module into the modules directory of your MagicMirror installation and run `npm install`.
