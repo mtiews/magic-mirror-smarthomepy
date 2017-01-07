@@ -7,6 +7,10 @@ Module.register("magic-mirror-smarthomepy", {
         items: []
     },
 
+    getStyles: function() {
+        return ["magic-mirror-smarthomepy.css"];
+    },
+
     start: function() {
         Log.info("Starting module: " + this.name);
         this.sendSocketNotification('CONFIG',this.config);
@@ -34,17 +38,21 @@ Module.register("magic-mirror-smarthomepy", {
 
             var itemName =  document.createElement("td");
             itemName.innerHTML = this.config.items[i].name;
-            itemName.className = "title bright";
+            itemName.className = "dimmed mmsh-name";
             itemWrapper.appendChild(itemName);
 
             var itemValue =  document.createElement("td");
+            var displayValue = this.config.items[i].value;
+            if('formatFunction' in this.config.items[i] && typeof this.config.items[i].formatFunction === 'function') {
+                displayValue = this.config.items[i].formatFunction(displayValue);
+            }
             if('unit' in this.config.items[i]) {
-                itemValue.innerHTML = this.config.items[i].value + ' ' + this.config.items[i].unit;
+                itemValue.innerHTML = displayValue + ' ' + this.config.items[i].unit;
             }
             else {
-                itemValue.innerHTML = this.config.items[i].value;
+                itemValue.innerHTML = displayValue;
             }
-            itemValue.className = "light";
+            itemValue.className = "bright mmsh-value";
             itemWrapper.appendChild(itemValue);
 
             wrapper.appendChild(itemWrapper);

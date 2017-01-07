@@ -22,7 +22,7 @@ Clone the module into the modules directory of your MagicMirror installation and
 		port: '2121', // Port of your SmartHome.py installation the WebSocket of the Visu plug-in is listing to
 		items: [
 			{ name: 'Temp - Living room', unit: '°C', item: 'livingroom.temp.value' },
-			{ name: 'Temp - Outside', unit: '°C', item: 'outside.temp.value'},
+			{ name: 'Temp - Outside', unit: '°C', item: 'outside.temp.value', formatFunction: function(val) { return Math.floor(val);}},
 			{ name: 'Power consumption', unit: 'Watt', item: 'power.total.consumption' }
 		]
 	}
