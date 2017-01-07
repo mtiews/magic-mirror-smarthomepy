@@ -1,0 +1,11 @@
+.mmsh-name {
+    color: #666;
+    font-size: 25px;
+}
+
+.mmsh-value {
+    color: #fff;
+    font-size: 35px;
+    padding-left: 30px;
+    line-height: 40px;
+}
