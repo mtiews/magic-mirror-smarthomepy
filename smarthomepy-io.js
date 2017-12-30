@@ -12,13 +12,19 @@ function SmarthomepyIO(configuration, dataCallback) {
 
 SmarthomepyIO.prototype.open = function() {
     var that = this;
-    var client = new WebSocketClient();
 
-    client.on('connectFailed', function(error) {
+    // check if connection is already open
+    if(this.connection && this.connection.connected) {
+        return;
+    }
+
+    this.client = new WebSocketClient();
+
+    this.client.on('connectFailed', function(error) {
         console.log('SmartHome.py: Connect Error: ' + error.toString());
     });
      
-    client.on('connect', function(connection) {
+    this.client.on('connect', function(connection) {
         that.connection = connection;
         console.log('SmartHome.py: WebSocket Client Connected');
         sendJson({
@@ -55,13 +61,9 @@ SmarthomepyIO.prototype.open = function() {
         }
     });
      
-    client.connect('ws://' + this.config.host + ':' + this.config.port + '/');
-}
+    this.client.connect('ws://' + this.config.host + ':' + this.config.port + '/');
 
-SmarthomepyIO.prototype.close = function() {
-    if(this.connection != null) {
-        this.connection.close();
-    }
+    setInterval(function() { that.open(); }, 60000);        
 }
 
 module.exports.createInstance = createInstance;

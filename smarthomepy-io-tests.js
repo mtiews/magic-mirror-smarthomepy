@@ -15,8 +15,13 @@ var io = smarthome.createInstance(
 
 io.open();
 
-console.log('Press any key to exit');
+setTimeout(function() {
+    console.log('Is connected - before: ' + io.connection.connected);
+    io.connection.close();
+    console.log('Is connected - after: ' + io.connection.connected);
+}, 3000);
 
+console.log('Press any key to exit');
 process.stdin.setRawMode(true);
 process.stdin.resume();
 process.stdin.on('data', process.exit.bind(process, 0));

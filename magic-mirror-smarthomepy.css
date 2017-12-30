@@ -1,6 +1,7 @@
 .mmsh-name {
     color: #ccc;
     font-size: 35px;
+    text-align: left;
 }
 
 .mmsh-value {
@@ -8,4 +9,5 @@
     font-size: 40px;
     padding-left: 30px;
     line-height: 40px;
+    text-align: left;
 }
