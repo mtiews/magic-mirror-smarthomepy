@@ -17,7 +17,9 @@ SmarthomepyIO.prototype.open = function() {
     if(this.connection && this.connection.connected) {
         return;
     }
-
+    if(this.client) {
+        this.client.abort();
+    }
     this.client = new WebSocketClient();
 
     this.client.on('connectFailed', function(error) {
